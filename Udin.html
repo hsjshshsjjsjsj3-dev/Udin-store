@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT UDIN STORE</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;scroll-behavior:smooth}
+    body{
+        background: #000 url('https://i.ibb.co/3Y7gKLLX/VORTEX.jpg') no-repeat center fixed;
+        background-size: cover;
+        color:white; padding-bottom:90px;
+    }
+    body::before{
+        content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+        backdrop-filter: blur(2px); z-index:-1;
+    }
+
+    /* KERANJANG UDAH DIHAPUS DARI SINI */
+
+    /* BANNER ATAS */
+.banner-atas{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+.banner-atas img{
+        width: 95%;
+        max-width: 500px;
+        border-radius: 25px;
+        border: 4px solid #b026ff;
+        box-shadow: 0 0 35px #b026ff;
+        animation: glowPulse 2s infinite alternate;
+    }
+
+.header-menu{
+        margin-top: 20px;
+        margin-bottom: 50px;
+        background: rgba(10,10,10,0.9);
+        border: 3px solid #b026ff;
+        border-radius: 20px;
+        padding: 18px 12px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 30px #b026ff, inset 0 0 20px rgba(176,38,255,0.3);
+        animation: glowPulse 2s infinite alternate;
+    }
+    @keyframes glowPulse{
+        from{box-shadow: 0 0 20px #b026ff, inset 0 0 10px rgba(176,38,255,0.2)}
+        to{box-shadow: 0 0 40px #b026ff, inset 0 0 30px rgba(176,38,255,0.4)}
+    }
+.header-menu ul{
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        list-style: none;
+    }
+.header-menu ul li{flex: 1;}
+.header-menu ul li a{
+        color: #00ffc3;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        padding: 12px 4px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        transition: all 0.3s;
+        text-align: center;
+        min-height: 90px;
+        white-space: nowrap;
+    }
+.header-menu ul li a:hover,
+.header-menu ul li a.active{
+        background: #b026ff;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px #b026ff;
+    }
+.header-menu ul li a span{font-size: 32px;}
+
+    section{padding:50px 20px;min-height:100vh}
+    h1{text-align:center;color:#b026ff;text-shadow:0 0 20px #b026ff;margin-bottom:20px;font-size:36px}
+    h2{text-align:center;color:#d98bff;margin-bottom:30px;text-shadow:0 0 10px #b026ff}
+    #home{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    #home p{font-size:18px;margin-bottom:30px;color:#ccc}
+.produk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.produk{background:rgba(0,0,0,0.85); border:3px solid #b026ff; border-radius:25px; padding:25px; text-align:center;box-shadow:0 0 25px rgba(176,38,255,0.5); position:relative}
+.produk h3{color:#d98bff;font-size:24px;margin-bottom:5px}
+.harga{font-size:26px;font-weight:bold;margin:15px 0;color:#00ffc3;text-shadow:0 0 10px #00ffc3}
+.stok{font-size:14px;margin:5px 0}
+.stok-habis{color:red;font-weight:bold}
+.stok-ada{color:#00ffc3}
+.qty{display:flex;justify-content:center;align-items:center;gap:15px;margin:20px 0}
+.qty button{width:45px;height:45px;border-radius:50%;border:none;background:#b026ff;color:white;font-size:22px;font-weight:bold;cursor:pointer;box-shadow:0 0 10px #b026ff}
+.btn-beli{background:#00ffc3;border:none;color:#000;padding:15px 50px;border-radius:30px;font-weight:bold;cursor:pointer;font-size:18px;width:100%;box-shadow:0 0 15px #00ffc3}
+.btn-beli:hover{box-shadow:0 0 30px #00ffc3}
+.btn-beli:disabled{background:#555;color:#aaa;cursor:not-allowed;box-shadow:none}
+.btn-hapus{background:red;border:none;color:white;padding:8px 15px;border-radius:10px;font-size:12px;cursor:pointer;position:absolute;top:10px;right:10px}
+.btn-logout{background:orange;border:none;color:#000;padding:10px 20px;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:10px;width:100%}
+    #tentang{text-align:center;max-width:700px;margin:0 auto}
+    #tentang p{font-size:18px;line-height:1.8;color:#ddd}
+
+    /* FOOTER MENU UDAH DIEDIT JADI 5 */
+.footer-menu{position:fixed; bottom:0; left:0; width:100%;background:rgba(0,0,0,0.95); backdrop-filter:blur(15px);border-top:3px solid #b026ff; padding:10px 0; z-index:999;box-shadow:0 -5px 25px rgba(176,38,255,0.6)}
+.footer-menu ul{display:flex;justify-content:space-around;list-style:none;align-items:center}
+.footer-menu ul li a{color:#b026ff; text-decoration:none; font-weight:bold; font-size:12px;display:flex; flex-direction:column; align-items:center; gap:4px;padding:6px 8px; border-radius:12px; transition:all 0.3s}
+.footer-menu ul li a:hover{color:#fff; background:#b026ff; box-shadow:0 0 15px #b026ff}
+.footer-menu ul li a span{font-size:20px}
+
+/* KERANJANG DI FOOTER - TENGAH */
+.footer-cart{
+    background:linear-gradient(90deg, #00ffc3, #b026ff);
+    color:#000!important;
+    padding:8px 12px!important;
+    border-radius:20px;
+    box-shadow:0 0 15px #00ffc3;
+    font-size:11px!important;
+}
+.footer-cart span{font-size:18px!important}
+.footer-cart:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #b026ff;
+}
+
+.popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);justify-content:center;align-items:center;z-index:9999}
+.popup-content{background:#0a0a0a;padding:18px;border-radius:15px;border:3px solid #b026ff;width:85%;max-width:350px;box-shadow:0 0 30px #b026ff}
+.popup-content h3{color:#fff;margin-bottom:10px;font-size:18px}
+.popup-content p{font-size:14px;line-height:1.5;color:#ccc}
+.popup-content input,.popup-content select{width:100%;padding:10px;margin:10px 0;border-radius:12px;border:2px solid #b026ff;background:#111;color:white;font-size:14px}
+.popup-content div[style*="font-size:60px"]{font-size:45px!important;margin-bottom:8px!important;}
+.close{float:right;font-size:24px;cursor:pointer;color:#b026ff}
+.close:hover{color:#00ffc3}
+    #adminPanel{display:none;margin-top:20px;padding-top:15px;border-top:2px dashed #b026ff}
+.btn-login{background:#00ffc3;color:#000}
+.item-keranjang{display:flex;justify-content:space-between;margin:8px 0;padding:8px;background:#111;border-radius:10px;font-size:14px}
+    #pesanLogin{font-size:14px;margin-top:5px;text-align:center;height:20px}
+</style>
+</head>
+<body>
+
+<section id="home">
+    <!-- FOTO BANNER UDIN UDAH GEDE -->
+    <div class="banner-atas">
+        <img src="https://i.ibb.co.com/4gtqT0cm/file-00000f300821189bae40d6a1e505e-2.jpg" alt="Banner Project Udin">
+    </div>
+
+    <!-- MENU -->
+    <nav class="header-menu">
+        <ul>
+            <li><a href="#panel"><span>🖥️</span>Panel</a></li>
+            <li><a href="#sc"><span>📜</span>Beli SC</a></li>
+            <li><a href="#bot"><span>🤖</span>Bot</a></li>
+            <li><a href="#idcantik"><span>💎</span>PUSAT ID CANTIK</a></li>
+        </ul>
+    </nav>
+
+    <h1>PROJECT UDIN STORE</h1>
+    <p>Welcome To Project Udin Store<br>Store terbaik buat kebutuhan kamu</p>
+    <button class="btn-beli" onclick="document.getElementById('panel').scrollIntoView()">LIHAT PRODUK</button>
+</section>
+
+<section id="panel">
+    <h2>🖥️ PRODUK PANEL</h2>
+    <div class="produk-grid" id="produkPanel"></div>
+</section>
+
+<section id="sc">
+    <h2>📜 PRODUK SOURCE CODE</h2>
+    <div class="produk-grid" id="produkSC"></div>
+</section>
+
+<section id="bot">
+    <h2>🤖 JASA & PRODUK BOT</h2>
+    <div class="produk-grid" id="produkBot"></div>
+</section>
+
+<section id="idcantik">
+    <h2>💎 PUSAT ID CANTIK</h2>
+    <div class="produk-grid" id="produkId"></div>
+</section>
+
+<section id="tentang">
+    <h2>TENTANG KAMI</h2>
+    <p>Udin store adalah toko online yang baru berdiri pada tahun 2026.<br>Kami menyediakan produk yang berkualitas tinggi dengan harga terjangkau.<br>Pesanan mudah, bayar via wa QR dana gopay, bara langsung di kirim ⚡🔥</p>
+</section>
+
+<!-- KERANJANG UDAH DIHAPUS DARI SINI -->
+
+<nav class="footer-menu">
+    <ul>
+        <li><a href="#home"><span>🏠</span>HOME</a></li>
+        <li><a href="#panel"><span>📦</span>PRODUK</a></li>
+        <!-- KERANJANG MASUK SINI TENGAH -->
+        <li><a href="#" class="footer-cart" onclick="showCheckout()"><span>🛒</span><span id="totalCart">Rp 0</span></a></li>
+        <li><a href="#tentang"><span>ℹ️</span>TENTANG</a></li>
+        <li><a href="#" onclick="loginAdmin()"><span>👑</span>ADMIN</a></li>
+    </ul>
+</nav>
+
+<div class="popup" id="popupCheckout">
+    <div class="popup-content">
+        <span class="close" onclick="tutupPopup('popupCheckout')">&times;</span>
+        <h3>📋 Daftar Pesanan</h3>
+        <div id="ringkasan"></div>
+        <h4 style="margin-top:15px;font-size:16px">Total: <span id="totalBayar">Rp 0</span></h4>
+        <input type="text" id="nama" placeholder="Nama Kamu">
+        <select id="metode">
+            <option>Transfer Bank</option>
+            <option>Gopay: 083190351250 a.n Udin</option>
+            <option>Dana: 083190351250 a.n Udin</option>
+        </select>
+        <button class="btn-beli" style="padding:12px;font-size:16px" onclick="kirimWA()">📲 PESAN VIA WHATSAPP</button>
+    </div>
+</div>
+
+<div class="popup" id="popupAdmin">
+    <div class="popup-content">
+        <span class="close" onclick="tutupPopup('popupAdmin')">&times;</span>
+        <h3>Panel Admin</h3>
+        <div id="loginForm">
+            <input type="password" id="passAdmin" placeholder="Password: admin123">
+            <p id="pesanLogin"></p>
+            <button class="btn-beli btn-login" style="padding:12px;font-size:16px" onclick="cekLogin()">LOGIN</button>
+        </div>
+        <div id="adminPanel">
+            <h3>Tambah Produk</h3>
+            <input type="text" id="namaProduk" placeholder="Nama Produk">
+            <input type="number" id="hargaProduk" placeholder="Harga">
+            <input type="number" id="stokProduk" placeholder="Stok" value="10">
+            <select id="kategoriProduk">
+                <option value="panel">Panel</option>
+                <option value="sc">SC</option>
+                <option value="bot">Bot</option>
+                <option value="id">Pusat ID Cantik</option>
+            </select>
+            <button class="btn-beli btn-login" style="padding:12px;font-size:16px;margin-top:10px" onclick="tambahProduk()">TAMBAH</button>
+            <button class="btn-logout" onclick="logoutAdmin()">LOGOUT ADMIN</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="popupKosong">
+    <div class="popup-content" style="text-align:center">
+        <span class="close" onclick="tutupPopup('popupKosong')">&times;</span>
+        <div style="font-size:60px;margin-bottom:10px">🛒😅</div>
+        <h3 style="color:#00ffc3;text-shadow:0 0 10px #00ffc3">WADUH KERANJANG KOSONG</h3>
+        <p>Silakan melakukan pembelian dulu ya bang<br>Pilih produk keren kita dulu 🔥</p>
+        <button class="btn-beli" style="padding:12px;font-size:16px;margin-top:10px" onclick="tutupPopup('popupKosong');document.getElementById('panel').scrollIntoView()">LIHAT PRODUK</button>
+    </div>
+</div>
+
+<div class="popup" id="popupHapus">
+    <div class="popup-content" style="text-align:center">
+        <span class="close" onclick="tutupPopup('popupHapus')">&times;</span>
+        <div style="font-size:60px;margin-bottom:10px">⚠️</div>
+        <h3 style="color:red;text-shadow:0 0 10px red">HAPUS PRODUK?</h3>
+        <p>Yakin mau buang <b id="namaHapus" style="color:#00ffc3"></b> ke tong sampah?<br>Tindakan ini tidak bisa dibatalkan!</p>
+        <div style="display:flex;gap:8px;margin-top:15px">
+            <button class="btn-beli" style="background:#555;box-shadow:none;padding:12px;font-size:15px" onclick="konfirmasiHapus(false)">BATAL</button>
+            <button class="btn-beli" style="background:red;box-shadow:0 0 15px red;padding:12px;font-size:15px" onclick="konfirmasiHapus(true)">YA, HAPUS!</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="popupSukses">
+    <div class="popup-content" style="text-align:center">
+        <div style="font-size:60px;margin-bottom:10px">✅</div>
+        <h3 style="color:#00ffc3;text-shadow:0 0 10px #00ffc3" id="teksSukses">Berhasil!</h3>
+    </div>
+</div>
+
+<script>
+let produk = JSON.parse(localStorage.getItem('produkUdin')) || [
+    {nama:"PANEL 1GB", desc:"Panel Pterodactyl 1GB", harga:10000, stok:10, qty:0, kategori:"panel"},
+    {nama:"PANEL 2GB", desc:"Panel Pterodactyl 2GB", harga:15000, stok:10, qty:0, kategori:"panel"},
+    {nama:"SC BOT WA", desc:"Source Code Bot WhatsApp", harga:25000, stok:5, qty:0, kategori:"sc"},
+    {nama:"SC WEB STORE", desc:"Source Code Web Toko", harga:40000, stok:3, qty:0, kategori:"sc"},
+    {nama:"JASA BIKIN BOT", desc:"Jasa Pembuatan Bot WA", harga:50000, stok:99, qty:0, kategori:"bot"},
+    {nama:"BOT PREMIUM", desc:"Bot WA Fitur Lengkap", harga:75000, stok:10, qty:0, kategori:"bot"},
+    {nama:"ID CANTIK 62", desc:"ID WA Cantik 62xxx", harga:20000, stok:15, qty:0, kategori:"id"},
+    {nama:"ID CANTIK VIP", desc:"ID WA Cantik VIP", harga:50000, stok:5, qty:0, kategori:"id"}
+];
+let keranjang = [];
+let produkHapusIndex = null;
+let isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+function simpanProduk(){localStorage.setItem('produkUdin', JSON.stringify(produk));}
+function renderSemua(){
+    renderKategori('panel', 'produkPanel');
+    renderKategori('sc', 'produkSC');
+    renderKategori('bot', 'produkBot');
+    renderKategori('id', 'produkId');
+}
+function renderKategori(kategori, idTarget){
+    let html = '';
+    let data = produk.filter(p => p.kategori === kategori);
+    data.forEach((p)=>{
+        let i = produk.indexOf(p);
+        let tombol = '';
+        let kelasStok = 'stok-ada';
+        let teksStok = `Stok: ${p.stok}`;
+        if(p.stok <= 0){
+            tombol = `<button class="btn-beli" disabled>STOK HABIS</button>`;
+            kelasStok = 'stok-habis';
+            teksStok = `STOK HABIS`;
+        } else {
+            tombol = `<button class="btn-beli" onclick="beliLangsung(${i})">BELI</button>`;
+        }
+        let btnHapus = isAdmin? `<button class="btn-hapus" onclick="hapusProduk(${i})">HAPUS</button>` : '';
+        html += `<div class="produk">${btnHapus}<h3>${p.nama}</h3><p>${p.desc}</p><div class="harga">Rp ${p.harga.toLocaleString('id-ID')}</div><div class="stok ${kelasStok}">${teksStok}</div><div class="qty"><button onclick="ubahQty(${i},-1)">-</button><span id="qty${i}">${p.qty}</span><button onclick="ubahQty(${i},1)">+</button></div>${tombol}</div>`
+    })
+    document.getElementById(idTarget).innerHTML = html;
+}
+function ubahQty(i,val){
+    produk[i].qty += val;
+    if(produk[i].qty < 0) produk[i].qty = 0;
+    if(produk[i].qty > produk[i].stok) produk[i].qty = produk[i].stok;
+    document.getElementById('qty'+i).innerText = produk[i].qty;
+}
+function beliLangsung(i){
+    if(produk[i].qty === 0){produk[i].qty = 1;}
+    tambahKeranjang(i);
+    showCheckout();
+}
+function tambahKeranjang(i){
+    if(produk[i].qty > 0){
+        produk[i].stok -= produk[i].qty;
+        let index = keranjang.findIndex(item => item.nama === produk[i].nama);
+        if(index!== -1){ keranjang[index].qty += produk[i].qty; }
+        else { keranjang.push({nama:produk[i].nama, harga:produk[i].harga, qty: produk[i].qty}); }
+        produk[i].qty = 0;
+        simpanProduk();
+        updateCart();
+        renderSemua();
+    }
+}
+function hapusProduk(i){
+    produkHapusIndex = i;
+    document.getElementById('namaHapus').innerText = produk[i].nama;
+    document.getElementById('popupHapus').style.display='flex';
+}
+function konfirmasiHapus(ya){
+    if(ya === true && produkHapusIndex!== null){
+        produk.splice(produkHapusIndex,1);
+        simpanProduk();
+        renderSemua();
+        bukaNotifSukses('Produk berhasil dihapus! 🗑️');
+    }
+    produkHapusIndex = null;
+    tutupPopup('popupHapus');
+}
+function updateCart(){
+    let total = keranjang.reduce((a,b)=> a + b.qty * b.harga,0);
+    document.getElementById('totalCart').innerText = 'Rp ' + total.toLocaleString('id-ID');
+}
+function showCheckout(){
+    if(keranjang.length === 0){
+        bukaPopupKosong();
+        return;
+    }
+    let ring = ''; let total = 0;
+    keranjang.forEach(p=>{
+        ring += `<div class="item-keranjang"><span>${p.nama} x ${p.qty}</span><span>Rp ${(p.qty*p.harga).toLocaleString('id-ID')}</span></div>`;
+        total += p.qty*p.harga;
+    })
+    document.getElementById('ringkasan').innerHTML = ring;
+    document.getElementById('totalBayar').innerText = 'Rp ' + total.toLocaleString('id-ID');
+    document.getElementById('popupCheckout').style.display='flex';
+}
+function kirimWA(){
+    let nama = document.getElementById('nama').value;
+    if(nama === ''){ bukaNotifSukses('Isi nama dulu bang!'); return; }
+    let metode = document.getElementById('metode').value;
+    let pesan = `Halo PROJECT UDIN STORE\nSaya ${nama} mau pesan:\n\n`;
+    keranjang.forEach(p=> pesan += `- ${p.nama} x${p.qty} = Rp ${(p.qty*p.harga).toLocaleString('id-ID')}\n`);
+    pesan += `\nTotal: ${document.getElementById('totalBayar').innerText}\nMetode: ${metode}`;
+    let url = `https://wa.me/6283190351250?text=${encodeURIComponent(pesan)}`;
+    let a = document.createElement('a'); a.href = url; a.target = '_blank'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    keranjang = []; updateCart(); tutupPopup('popupCheckout');
+}
+function loginAdmin(){
+    document.getElementById('popupAdmin').style.display='flex';
+    if(isAdmin){
+        document.getElementById('loginForm').style.display='none';
+        document.getElementById('adminPanel').style.display='block';
+    } else {
+        document.getElementById('loginForm').style.display='block';
+        document.getElementById('adminPanel').style.display='none';
+    }
+    document.getElementById('pesanLogin').innerText = '';
+}
+function cekLogin(){
+    let pass = document.getElementById('passAdmin').value;
+    let pesan = document.getElementById('pesanLogin');
+    if(pass == 'admin123'){
+        isAdmin = true;
+        localStorage.setItem('isAdmin', 'true');
+        document.getElementById('loginForm').style.display='none';
+        document.getElementById('adminPanel').style.display='block';
+        pesan.style.color = '#00ffc3';
+        pesan.innerText = 'Login Berhasil ✓';
+        document.getElementById('passAdmin').value = '';
+        renderSemua();
+    }else {
+        pesan.style.color = 'red';
+        pesan.innerText = 'Password Salah!';
+    }
+}
+function logoutAdmin(){
+    isAdmin = false;
+    localStorage.removeItem('isAdmin');
+    document.getElementById('loginForm').style.display='block';
+    document.getElementById('adminPanel').style.display='none';
+    renderSemua();
+    bukaNotifSukses('Logout berhasil!')
+}
+function tambahProduk(){
+    let nama = document.getElementById('namaProduk').value;
+    let harga = document.getElementById('hargaProduk').value;
+    let stok = document.getElementById('stokProduk').value;
+    let kategori = document.getElementById('kategoriProduk').value;
+    if(nama && harga && stok){
+        produk.push({nama:nama,harga:parseInt(harga),stok:parseInt(stok),qty:0,desc:'Produk baru',kategori:kategori});
+        simpanProduk();
+        renderSemua();
+        document.getElementById('namaProduk').value = '';
+        document.getElementById('hargaProduk').value = '';
+        document.getElementById('stokProduk').value = '';
+        bukaNotifSukses('Produk ditambahkan ke '+kategori+'! ✨')
+    } else {
+        bukaNotifSukses('Isi semua data dulu bang!')
+    }
+}
+function tutupPopup(id){
+    document.getElementById(id).style.display='none';
+    document.getElementById('passAdmin').value = '';
+    document.getElementById('pesanLogin').innerText = '';
+}
+function bukaPopupKosong(){
+    document.getElementById('popupKosong').style.display='flex';
+}
+function bukaNotifSukses(teks){
+    document.getElementById('teksSukses').innerText = teks;
+    document.getElementById('popupSukses').style.display='flex';
+    setTimeout(() => { tutupPopup('popupSukses'); }, 1500);
+}
+document.querySelectorAll('.header-menu a').forEach(link => {
+    link.addEventListener('click', function(){
+        document.querySelectorAll('.header-menu a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+renderSemua();
+</script>
+</body>
+</html>
